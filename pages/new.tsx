@@ -119,8 +119,20 @@ export default function New() {
                 <Usage
                   parrafos={[
                     { text: "Create a new NFT Token. Following the ZIP-6 standard." },
+                    { text: "Select the network in which you want to implement the contract and fill in the parameters."},
+                    { text: "The required parameters are Name and Symbol, the Initial URI parameter can be empty, it can be modified later in Manage."}
                   ]}
-                />
+                >
+                  <div>
+                    <a 
+                      href="https://github.com/Zilliqa/ZRC/blob/main/zrcs/zrc-6.md"
+                    target="_blank"
+                    className="text-blue-700 hover:underline"
+                    >
+                      Read more about ZIP-6 Token Interface.
+                    </a>
+                  </div>
+                </Usage>
               </div>
             </div>
           </div>

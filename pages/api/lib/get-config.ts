@@ -1,4 +1,8 @@
 import { bytes, Long, units } from "@zilliqa-js/util";
+import path from "path";
+
+
+export const UPLOADS_DIR = path.join(process.cwd(), 'public/uploads');
 
 const MAINNET_RPC_URL = "https://api.zilliqa.com/";
 const MAINNET_CHAIN_ID = 1;

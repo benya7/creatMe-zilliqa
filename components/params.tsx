@@ -1,13 +1,19 @@
 import { useState } from "react";
 import { Transition } from "../lib/types";
-
+import { Options } from "../pages/manage";
 export const Params = ({
   transition,
-  setTransition
+  setTransition,
+  options,
+  setOptions
 }: {
   transition: Partial<Transition>;
   setTransition: (value: Partial<Transition>) => void;
+  options: Options;
+  setOptions: (value: Options) => void;
 }) => {
+
+
   if (transition.name === "SetRoyaltyRecipient") {
     return (
       <div>
@@ -207,10 +213,30 @@ export const Params = ({
     )
   } else if (transition.name === "BatchMint") {
     return (
-      <BatchMint
-        transition={transition}
-        setTransition={setTransition}
-      />
+      <div className="grid grid-cols-1 gap-4">
+        <label className="block" htmlFor="batchMintWithFile">
+          <div className="flex flex-row gap-4">
+            <span className="text-gray-700">Batch minting will be done with file?</span>
+            <input
+              type="checkbox"
+              id="batchMintWithFile"
+              name="batchMintWithFile"
+              checked={options.batchMintWithFile}
+              onChange={() => setOptions({ batchMintWithFile: !options.batchMintWithFile })}
+              className="mt-1 block rounded-full border-black border-2"
+
+            />
+          </div>
+        </label>
+        {
+          !options.batchMintWithFile && (
+            <BatchMint
+              transition={transition}
+              setTransition={setTransition}
+            />
+          )
+        }
+      </div>
     )
   }
   else {
@@ -244,6 +270,8 @@ const BatchMint = ({
         ]
       }
     })
+    setTo(undefined);
+    setTokenURI(undefined);
   }
   const clearListDest = () => {
     setTransition({
@@ -255,9 +283,8 @@ const BatchMint = ({
 
   return (
     <div className="grid grid-cols-1 gap-4" >
-
       <label className="block" htmlFor="to">
-        <span className="text-gray-700">to</span>
+        <span className="text-gray-700 text-sm">to</span>
         <input
           type="text"
           name="to"
@@ -269,7 +296,7 @@ const BatchMint = ({
         />
       </label>
       <label className="block" htmlFor="tokenURI">
-        <span className="text-gray-700">Token URI</span>
+        <span className="text-gray-700 text-sm">Token URI</span>
         <input
           type="text"
           min={0}

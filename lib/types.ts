@@ -41,6 +41,9 @@ export interface NewRequest extends BaseRequest {
 export interface AdminRequest extends BaseRequest {
   contractAddress: string;
   transition: Transition;
+  options?: {
+    batchMintWithFile?: boolean
+  }
 }
 
 export type Network = "testnet" | "mainnet"

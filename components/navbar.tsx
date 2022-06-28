@@ -15,12 +15,6 @@ export default function Navbar() {
         <Link href="/manage">
           <a className="hover:text-emerald-500 text-lg hover:scale-105 duration-200">Manage</a>
         </Link>
-        <Link href="/transfer">
-          <a className="hover:text-emerald-500 text-lg hover:scale-105 duration-200">Transfer</a>
-        </Link>
-        <Link href="/show">
-          <a className="hover:text-emerald-500 text-lg hover:scale-105 duration-200">Show</a>
-        </Link>
       </div>
     </nav>
   )

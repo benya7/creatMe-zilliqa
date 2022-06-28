@@ -1,5 +1,6 @@
-import { FormEvent, useState } from "react";
+import { FormEvent } from "react";
 import { Network, Transition, TransitionName } from "../lib/types";
+import { Options } from "../pages/manage";
 import { Params } from "./params";
 
 interface FormProps {
@@ -10,6 +11,8 @@ interface FormProps {
   setTransition: (value?: Partial<Transition>) => void;
   network?: Network;
   setNetwork: (value?: Network) => void;
+  options: Options;
+  setOptions: (value: Options) => void;
 }
 
 export default function ManageForm({
@@ -19,7 +22,9 @@ export default function ManageForm({
   transition,
   setTransition,
   network,
-  setNetwork
+  setNetwork,
+  options,
+  setOptions
 }: FormProps) {
   return (
     <form onSubmit={handleOnSubmit}>
@@ -82,7 +87,12 @@ export default function ManageForm({
 
           {
             transition && (
-              <Params transition={transition} setTransition={setTransition} />
+              <Params 
+              transition={transition} 
+              setTransition={setTransition} 
+              options={options}
+              setOptions={setOptions}
+              />
             )
           }
 
