@@ -15,12 +15,12 @@ export default function Layout({ children }: LayoutProps) {
         <div className="flex flex-col gap-2 items-center">
           <a
             className="flex items-center justify-center gap-2"
-            href="https://tezos.com"
+            href="https://zilliqa.com"
             target="_blank"
             rel="noopener noreferrer"
           >
             Powered by{' '}
-            <Image src="/tezos-logo-1.svg" alt="Tezos Logo" width={72} height={32} />
+            <Image src="/zilliqa-logo.png" alt="Zilliqa Logo" width={88} height={48} />
           </a>
           <a
             href="https://github.com/en0c-026"
