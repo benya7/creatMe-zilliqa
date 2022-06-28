@@ -51,7 +51,10 @@ export default async function handler(req: Request, res: NextApiResponse) {
           if (!validFormat) {
             throw new Error("ITEM_FORMAT_INVALID");
           }
-          batchMintItems.push([item.to, item.tokenURI]);
+          batchMintItems.push([
+              parseAddress(item.to),
+              item.tokenURI]
+              );
         })
 
         transition.params.to_token_uri_pair_list = [
