@@ -14,7 +14,7 @@ export default function New() {
 
   const [loadingTransaction, setLoadingTrasanction] = useState(false);
   const [contractAddress, setContractAddress] = useState("");
-  const [network, setNetwork] = useState("");
+  const [network, setNetwork] = useState("testnet");
   const [name, setName] = useState("");
   const [symbol, setSymbol] = useState("");
   const [initialUri, setInitialUri] = useState("");

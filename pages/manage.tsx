@@ -18,7 +18,7 @@ export default function Manage() {
 
   const [loadingTransaction, setLoadingTrasanction] = useState(false);
   const [contractAddress, setContractAddress] = useState("");
-  const [network, setNetwork] = useState<Network>();
+  const [network, setNetwork] = useState<Network>("testnet");
   const [options, setOptions] = useState<Options>({
     batchMintWithFile: false
   });

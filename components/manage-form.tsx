@@ -9,8 +9,8 @@ interface FormProps {
   setContractAddress: (value: string) => void
   transition?: Partial<Transition>;
   setTransition: (value?: Partial<Transition>) => void;
-  network?: Network;
-  setNetwork: (value?: Network) => void;
+  network: Network;
+  setNetwork: (value: Network) => void;
   options: Options;
   setOptions: (value: Options) => void;
 }
