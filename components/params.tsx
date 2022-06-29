@@ -25,7 +25,6 @@ export const Params = ({
             id="to"
             name="to"
             value={transition.params?.to ? transition.params.to[1] : ""}
-            required
             onChange={({ target: { value } }) => setTransition({
               ...transition,
               params: {
@@ -50,7 +49,7 @@ export const Params = ({
             id="fee_bps"
             name="fee_bps"
             value={transition.params?.fee_bps ? transition.params.fee_bps[1] : 0}
-            required
+            
             onChange={({ target: { value } }) => setTransition({
               ...transition,
               params: {
@@ -75,7 +74,7 @@ export const Params = ({
             id="uri"
             name="uri"
             value={transition.params?.uri ? transition.params.uri[1] : ""}
-            required
+            
             onChange={({ target: { value } }) => setTransition({
               ...transition,
               params: {
@@ -100,7 +99,7 @@ export const Params = ({
             id="to"
             name="to"
             value={transition.params?.to ? transition.params.to[1] : ""}
-            required
+            
             onChange={({ target: { value } }) => setTransition({
               ...transition,
               params: {
@@ -125,7 +124,7 @@ export const Params = ({
             id="to"
             name="to"
             value={transition.params?.to ? transition.params.to[1] : ""}
-            required
+            
             onChange={({ target: { value } }) => setTransition({
               ...transition,
               params: {
@@ -150,7 +149,7 @@ export const Params = ({
             id="to"
             name="to"
             value={transition.params?.to ? transition.params.to[1] : ""}
-            required
+            
             onChange={({ target: { value } }) => setTransition({
               ...transition,
               params: {
@@ -175,7 +174,7 @@ export const Params = ({
             type="text"
             id="to"
             name="to"
-            required
+            
             value={transition.params?.to ? transition.params.to[1] : ""}
             onChange={({ target: { value } }) => setTransition({
               ...transition,
@@ -195,7 +194,7 @@ export const Params = ({
             type="text"
             id="token_uri"
             name="token_uri"
-            required
+            
             value={transition.params?.token_uri ? transition.params.token_uri[1] : ""}
             onChange={({ target: { value } }) => setTransition({
               ...transition,
@@ -289,7 +288,7 @@ const BatchMint = ({
           type="text"
           name="to"
           id="to"
-          required
+          
           value={to ? to : ""}
           onChange={(e) => setTo(e.target.value)}
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -302,7 +301,7 @@ const BatchMint = ({
           min={0}
           name="tokenURI"
           id="tokenURI"
-          required
+          
           value={tokenURI ? tokenURI : ""}
           onChange={(e) => setTokenURI(e.target.value)}
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
