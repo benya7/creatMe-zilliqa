@@ -1,4 +1,5 @@
 import { FormEvent } from "react";
+import { Network } from "../lib/types";
 
 interface FormProps {
   handleOnSubmit: (event: FormEvent<HTMLFormElement>) => Promise<void>;
@@ -6,8 +7,8 @@ interface FormProps {
   setName: (value: string) => void
   symbol: string;
   setSymbol: (value: string) => void;
-  network: string;
-  setNetwork: (value: string) => void;
+  network: Network;
+  setNetwork: (value: Network) => void;
   initialUri: string;
   setInitialUri: (value: string) => void;
 }
@@ -73,7 +74,7 @@ export default function NewTokenForm({
               id="network"
               required
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              onChange={(e) => setNetwork(e.target.value)}
+              onChange={(e) => setNetwork((e.target.value) as Network)}
               value={network}
             >
               <option value="testnet">Testnet</option>
@@ -83,7 +84,7 @@ export default function NewTokenForm({
           <button 
           className="mt-2 px-4 py-2 border bg-emerald-300 rounded-xl hover:bg-emerald-500 disabled:bg-gray-300" 
           type="submit"
-          disabled={name === "" || symbol === "" || network === ""}
+          disabled={name === "" || symbol === ""}
           >
             Submit
           </button>

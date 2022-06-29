@@ -1,3 +1,4 @@
+import { Network } from "../lib/types";
 
 interface TransactionProps {
   loadingTrasaction: boolean
@@ -7,6 +8,7 @@ interface TransactionProps {
   hash?: {
     type: string;
     value: string;
+    network: Network;
   }
 }
 
@@ -43,7 +45,12 @@ export default function Transaction({
                     hash && (
                       <div className="flex flex-col items-center">
                         <span>{hash.type} hash:</span>
-                        <span className=" text-blue-700 font-medium">{hash.value}</span>
+                        <a 
+                            href={`https://viewblock.io/zilliqa/address/${hash.value}?network=${hash.network}`}
+                        className=" text-blue-700 font-medium"
+                        >
+                          {hash.value}
+                        </a>
                       </div>
                     )
                   }
