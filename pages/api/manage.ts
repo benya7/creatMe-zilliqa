@@ -30,11 +30,11 @@ export default async function handler(req: Request, res: NextApiResponse) {
       const contractAddressParsed = parseAddress(contractAddress)
       const contract = zilliqa.contracts.at(contractAddressParsed);
 
-      if (transition.params.to) {
+      if (transition.params && transition.params.to) {
         transition.params.to[1] = parseAddress(transition.params.to[1])
       }
 
-      if (transition.params.to_token_uri_pair_list) {
+      if (transition.params && transition.params.to_token_uri_pair_list) {
         let toAddressArray: [string, string][] = transition.params.to_token_uri_pair_list[1];
         let toAddressArrayParsed = toAddressArray
           .filter(to => to !== null)
@@ -68,11 +68,12 @@ export default async function handler(req: Request, res: NextApiResponse) {
             item.tokenURI]
           );
         })
-
-        transition.params.to_token_uri_pair_list = [
-          "List (Pair (ByStr20) (String))",
-          batchMintItems
-        ]
+        transition.params = {
+          to_token_uri_pair_list: [
+            "List (Pair (ByStr20) (String))",
+            batchMintItems
+          ]
+        }
       }
 
       const txParams = {
