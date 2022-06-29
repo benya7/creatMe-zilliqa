@@ -48,7 +48,7 @@ export default function Transaction({
                         <a
                           target="_blank"
                           href={`https://viewblock.io/zilliqa/address/${hash.value}?network=${hash.network}`}
-                          className=" text-blue-700 font-medium"
+                          className=" text-blue-700 font-medium hover:underline"
                         >
                           {hash.value}
                         </a>
