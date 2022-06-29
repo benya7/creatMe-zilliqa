@@ -40,14 +40,15 @@ export default function Transaction({
               ) : (
                 <div className="flex flex-col items-center justify-between gap-4 py-4">
                   <span>{message}</span>
-                  
+
                   {
                     hash && (
                       <div className="flex flex-col items-center">
                         <span>{hash.type} hash:</span>
-                        <a 
-                            href={`https://viewblock.io/zilliqa/address/${hash.value}?network=${hash.network}`}
-                        className=" text-blue-700 font-medium"
+                        <a
+                          target="_blank"
+                          href={`https://viewblock.io/zilliqa/address/${hash.value}?network=${hash.network}`}
+                          className=" text-blue-700 font-medium"
                         >
                           {hash.value}
                         </a>
