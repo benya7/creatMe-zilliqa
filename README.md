@@ -2,6 +2,8 @@
 
 A platform where developers or creators can implement and manage their ZIP-6 Token (Non-Fungible-Token) in Zilliqa through a web version.
 
+Video Demo:
+[https://youtu.be/Km-nPR2O9H4](https://youtu.be/Km-nPR2O9H4)
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
