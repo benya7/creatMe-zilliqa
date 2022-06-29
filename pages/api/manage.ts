@@ -34,6 +34,18 @@ export default async function handler(req: Request, res: NextApiResponse) {
         transition.params.to[1] = parseAddress(transition.params.to[1])
       }
 
+      if (transition.params.to_token_uri_pair_list) {
+        let toAddressArray: [string, string][] = transition.params.to_token_uri_pair_list[1];
+        let toAddressArrayParsed = toAddressArray
+          .filter(to => to !== null)
+          .map(to => {
+            if (to) {
+              return [parseAddress(to[0]), to[1]]
+            }
+          })
+        transition.params.to_token_uri_pair_list[1] = toAddressArrayParsed;
+      }
+
       if (transition.name == 'BatchMint' && options?.batchMintWithFile) {
         let mintFile = fs.readFileSync(path.join(UPLOADS_DIR, 'batch-mint.json'), 'utf-8');
         let mintFileParse: {
@@ -52,9 +64,9 @@ export default async function handler(req: Request, res: NextApiResponse) {
             throw new Error("ITEM_FORMAT_INVALID");
           }
           batchMintItems.push([
-              parseAddress(item.to),
-              item.tokenURI]
-              );
+            parseAddress(item.to),
+            item.tokenURI]
+          );
         })
 
         transition.params.to_token_uri_pair_list = [
