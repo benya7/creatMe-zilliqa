@@ -7,7 +7,6 @@ import { scillaJSONParams } from "@zilliqa-js/scilla-json-utils";
 import { BN, Long, units } from "@zilliqa-js/util"
 import getConfig from "./lib/get-config";
 import getErrorCause from './lib/get-error-cause';
-import { toBech32Address } from '@zilliqa-js/zilliqa';
 
 export const GAS_LIMIT = Long.fromNumber(80000);
 export const GAS_PRICE = units.toQa("2000", units.Units.Li);
@@ -52,18 +51,23 @@ export default async function handler(req: Request, res: NextApiResponse) {
         .deploy(txParams, 33, 1000, false)
 
       let receipt = tx.txParams.receipt
-      if (receipt && receipt.exceptions && contract.address) {
+      if (receipt && receipt.exceptions) {
         let errorCause = getErrorCause(receipt.exceptions[0].message);
         throw new Error(errorCause);
+      } 
+      if (contract.address) {
+        console.log("successful deploy!");
+        console.log("contract address =>", contract.address);
+
+        res.status(200).json({
+          success: receipt?.success,
+          contractAddress: contract.address
+        });
+      } else {
+        throw new Error("FAIL_FETCH_CONTRACT_ADDRESS");
+        
       }
-
-      console.log("successful deploy!");
-      console.log("contract address =>", contract.address);
-
-      res.status(200).json({
-        success: receipt?.success,
-        contractAddress: toBech32Address(contract.address!)
-      });
+      
 
     } catch (error: any) {
       console.error(error);

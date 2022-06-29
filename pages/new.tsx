@@ -8,13 +8,15 @@ import Usage from "../components/usage";
 import useModal from "../hooks/useModal";
 import Transaction from "../components/transaction";
 import NewTokenForm from "../components/new-token-form";
+import { Network } from "../lib/types";
+import { toBech32Address } from "@zilliqa-js/zilliqa";
 //import handleItem from "../lib/handle-item-local";
 
 export default function New() {
 
   const [loadingTransaction, setLoadingTrasanction] = useState(false);
   const [contractAddress, setContractAddress] = useState("");
-  const [network, setNetwork] = useState("testnet");
+  const [network, setNetwork] = useState<Network>("testnet");
   const [name, setName] = useState("");
   const [symbol, setSymbol] = useState("");
   const [initialUri, setInitialUri] = useState("");
@@ -52,7 +54,7 @@ export default function New() {
       const { data: response } = await axios.post('/api/new', data, config);
 
       console.log(response);
-      setContractAddress(response.contractAddress)
+      setContractAddress(toBech32Address(response.contractAddress))
       setLoadingTrasanction(false);
 
     } catch (e: any) {
@@ -93,7 +95,7 @@ export default function New() {
               loadingTrasaction={loadingTransaction}
               hideModal={hideModalTransaction}
               message="The contract deployment was successful."
-              hash={{ type: "contract", value: contractAddress }}
+              hash={{ type: "contract", value: contractAddress, network: network }}
               action="Deploying NFT Token contract..."
             />
           )
